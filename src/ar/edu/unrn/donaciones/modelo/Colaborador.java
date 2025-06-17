@@ -15,7 +15,7 @@ public class Colaborador extends Persona {
                 ordenActual.obtenerEstado() == OrdenRetiro.ESTADO_COMPLETADO;
     }
 
-    // intenta aceptar la orden si está disponible
+    // intenta aceptar la orden si esta disponible
     public boolean aceptarOrden(OrdenRetiro orden) {
         if (!disponible()) {
             return false;// no se puede aceptar la orden
@@ -25,7 +25,7 @@ public class Colaborador extends Persona {
         // quien recibe la orden es el voluntario
         orden.asignarVoluntario(this);
         // notificar al voluntario
-        notificar("Se le asignó " + orden);
+        notificar("Se le asigno " + orden);
         return true;
     }
 

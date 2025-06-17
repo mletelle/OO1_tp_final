@@ -11,21 +11,21 @@ public class ProyectoDonaciones {
     public static void main(String[] args) {
 
         // organizacion y voluntarios
-        // creo la ong Fundación RN
-        Organizacion ong = new Organizacion("Fundación RN");
+        // creo la ong Fundacion RN
+        Organizacion ong = new Organizacion("Fundacion RN");
         Ubicacion base = new Ubicacion("1º Junta 100", "Centro", "Viedma",
                 -40.8, -63.0);
         // tres colaboradores con su info y ubi
-        Colaborador juan = new Colaborador("Juan", "Pérez", 9876543, base);
-        Colaborador rodrigo = new Colaborador("Rodrigo", "González", 1357924, base);
-        Colaborador maria = new Colaborador("María", "Sosa", 2468101, base);
+        Colaborador juan = new Colaborador("Juan", "Perez", 9876543, base);
+        Colaborador rodrigo = new Colaborador("Rodrigo", "Gonzalez", 1357924, base);
+        Colaborador maria = new Colaborador("Maria", "Sosa", 2468101, base);
         // agrego los colaboradores a la ong
         ong.agregarVoluntario(juan);
         ong.agregarVoluntario(rodrigo);
         ong.agregarVoluntario(maria);
 
         // donante para los pedidos
-        Donante ana = new Donante("Ana", "López", 12345678, base);
+        Donante ana = new Donante("Ana", "Lopez", 12345678, base);
 
         // lote de bienes
         ArrayList<Bien> lote = new ArrayList<>();
@@ -78,7 +78,7 @@ public class ProyectoDonaciones {
         // cuarto pedido para mostrar a Maria
         PedidosDonacion p4 = ana.crearPedido(new Date(), lote,
                 PedidosDonacion.VEHICULO_AUTO, "Pedido 4");
-        OrdenRetiro o4 = ong.gestionarSolRet(p4); // debería asignarse a maria
+        OrdenRetiro o4 = ong.gestionarSolRet(p4); // deberia asignarse a maria
         o4.comenzar();
         o4.agregarVisita(new Visita(new Date(),
                 Visita.ESTADO_REALIZADA, "Visita extra de prueba", bVisita));

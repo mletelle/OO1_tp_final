@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class OrdenRetiro {
 
-    // variables y catálogos
+    // variables y catalogos
     private static int secuencia = 0;
     public static final int ESTADO_PENDIENTE = 1;
     public static final int ESTADO_EN_EJECUCION = 2;

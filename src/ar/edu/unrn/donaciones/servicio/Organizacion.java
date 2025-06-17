@@ -32,7 +32,7 @@ public class Organizacion {
         for (Colaborador c : voluntarios) {
             if (c.aceptarOrden(orden)) {
                 // 3) Notificar al donante
-                pedido.obtenerDonante().notificar("Se generó " + orden);
+                pedido.obtenerDonante().notificar("Se genero " + orden);
                 return orden;
             }
         }
@@ -43,6 +43,6 @@ public class Organizacion {
 
     @Override
     public String toString() {
-        return "Organización " + nombre + " con " + voluntarios.size() + " voluntarios";
+        return "Organizacion " + nombre + " con " + voluntarios.size() + " voluntarios";
     }
 }

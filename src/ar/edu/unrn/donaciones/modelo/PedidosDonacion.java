@@ -70,7 +70,7 @@ public class PedidosDonacion {
     public String toString() {
         return "Pedido#" + id
                 + " (" + fecha + ") de " + donante
-                + " — Vehículo: " + describirTipoVehiculo();
+                + " — Vehiculo: " + describirTipoVehiculo();
     }
   
     // metodo de ayuda para el toString
@@ -81,7 +81,7 @@ public class PedidosDonacion {
             case VEHICULO_CAMIONETA:
                 return "CAMIONETA";
             case VEHICULO_CAMION:
-                return "CAMIÓN";
+                return "CAMIoN";
             default:
                 return "DESCONOCIDO";
         }
