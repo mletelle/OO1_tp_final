@@ -11,8 +11,7 @@ public class Colaborador extends Persona {
 
     // comprueba si el colaborador esta libre
     public boolean disponible() {
-        return ordenActual == null ||
-                ordenActual.obtenerEstado() == OrdenRetiro.ESTADO_COMPLETADO;
+        return ordenActual == null || ordenActual.estaCompletada();
     }
 
     // intenta aceptar la orden si esta disponible

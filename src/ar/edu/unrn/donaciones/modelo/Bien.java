@@ -1,16 +1,18 @@
 package ar.edu.unrn.donaciones.modelo;
 
+import java.util.Objects;
+
 public class Bien {
 
     // constantes 
-    public static final int TIPO_ALIMENTO = 1;
-    public static final int TIPO_ROPA = 2;
-    public static final int TIPO_MOBILIARIO = 3;
-    public static final int TIPO_HIGIENE = 4;
+	private static final int TIPO_ALIMENTO = 1;
+	private static final int TIPO_ROPA = 2;
+	private static final int TIPO_MOBILIARIO = 3;
+	private static final int TIPO_HIGIENE = 4;
 
-    public static final int CATEGORIA_BAJA = 1;
-    public static final int CATEGORIA_MEDIA = 2;
-    public static final int CATEGORIA_ALTA = 3;
+	private static final int CATEGORIA_BAJA = 1;
+	private static final int CATEGORIA_MEDIA = 2;
+	private static final int CATEGORIA_ALTA = 3;
     
     //atributos
     private int tipo;
@@ -23,7 +25,25 @@ public class Bien {
         this.cantidad = cantidad;
         this.categoria = categoria;
     }
-    
+    public Bien(String tipo, int cantidad, String cat) {
+        this.cantidad = cantidad;
+        if (tipo.equalsIgnoreCase("alimento")) {
+        	this.tipo = TIPO_ALIMENTO;
+        }else if (tipo.equalsIgnoreCase("ropa")) {
+        	this.tipo = TIPO_ROPA;
+        }else if (tipo.equalsIgnoreCase("mobiliario")) {
+        	this.tipo = TIPO_MOBILIARIO;
+        }else {
+        	this.tipo = TIPO_HIGIENE;
+        }
+        if (cat.equalsIgnoreCase("baja")) {
+        	this.categoria = CATEGORIA_BAJA;
+        }else if (cat.equalsIgnoreCase("media")) {
+        	this.categoria = CATEGORIA_MEDIA;
+        }else {
+        	this.categoria = CATEGORIA_ALTA;
+        }
+    }
     //getters
     public int obtenerTipo() {
         return tipo;
@@ -41,7 +61,7 @@ public class Bien {
     //se utilizaria para saber el tipo de vehiculo necesario
     //para transportar los bienes
     // no se usa en el main pero se deja por si se necesita
-    public double calcularVolumen() {
+    private double calcularVolumen() {
         if (tipo == TIPO_MOBILIARIO)// mobiliario ocupa medio metro cubico por unidad
             return cantidad * 0.5; 
         if (tipo == TIPO_ALIMENTO)
@@ -80,7 +100,15 @@ public class Bien {
 
     @Override
         public String toString() {
-            return cantidad + " x " + describirTipo() +
-                    " [" + describirCategoria() + "]";
+            return cantidad + " x " + describirTipo() + describirCategoria();
         }
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		Bien other = (Bien) obj;
+		return cantidad == other.cantidad && categoria == other.categoria && tipo == other.tipo;
+	}
+    
 }

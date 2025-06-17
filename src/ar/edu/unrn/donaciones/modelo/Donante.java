@@ -23,17 +23,15 @@ public class Donante extends Persona {
 
     // fabrica un nuevo pedido usando la fecha indicada y lo agrega a la lista
     // interna
-    public PedidosDonacion crearPedido(Date fecha, ArrayList<Bien> bienes,
-            int tipoVehiculo, String obs) {
-        PedidosDonacion p = new PedidosDonacion(fecha, bienes, tipoVehiculo, obs, this);
+    public PedidosDonacion crearPedido(Date fecha, ArrayList<Bien> bienes, String tipo, String obs) {
+        PedidosDonacion p = new PedidosDonacion(fecha, bienes, tipo, obs, this);
         pedidos.add(p);
         return p;
     }
 
     // crea un pedido usando la fecha actual
-    public PedidosDonacion crearPedido(ArrayList<Bien> bienes,
-            int tipoVehiculo, String obs) {
-        return crearPedido(new Date(), bienes, tipoVehiculo, obs);
+    public PedidosDonacion crearPedido(ArrayList<Bien> bienes, String tipo, String obs) {
+        return crearPedido(new Date(), bienes, tipo, obs);
     }
 
     // notificar al donante

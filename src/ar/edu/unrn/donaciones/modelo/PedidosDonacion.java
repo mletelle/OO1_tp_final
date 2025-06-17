@@ -2,16 +2,17 @@ package ar.edu.unrn.donaciones.modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class PedidosDonacion {
 
     // variables de clase
-    private static int secuencia = 0;
+    private static int secuencia = 0;//para usarlo de id
 
     // catalogos
-    public static final int VEHICULO_AUTO = 1;
-    public static final int VEHICULO_CAMIONETA = 2;
-    public static final int VEHICULO_CAMION = 3;
+    private static final int VEHICULO_AUTO = 1;
+    private static final int VEHICULO_CAMIONETA = 2;
+    private static final int VEHICULO_CAMION = 3;
 
     // atributos
     private int id;
@@ -24,12 +25,27 @@ public class PedidosDonacion {
 
     // constructor con todos los parametros
     public PedidosDonacion(Date fecha, ArrayList<Bien> bienes, int tipoVehiculo, String observaciones, Donante d) {
-        this.id = ++secuencia;
+        this.id = ++secuencia;//preincremta para arrancar desde el 1
         this.fecha = fecha;
         this.bienes = bienes;
         this.tipoVehiculo = tipoVehiculo;
         this.observaciones = observaciones;
         this.donante = d;
+    }
+    public PedidosDonacion(Date fecha, ArrayList<Bien> bienes, String tipo, String observaciones, Donante d) {
+        this.id = ++secuencia;//preincremta para arrancar desde el 1
+        this.fecha = fecha;
+        this.bienes = bienes;
+        this.observaciones = observaciones;
+        this.donante = d;
+        if (tipo.equalsIgnoreCase("auto")) {
+        	this.tipoVehiculo = 1;
+        }else if(tipo.equalsIgnoreCase("camioneta")) {
+        	this.tipoVehiculo = 2;
+        }else {
+        	this.tipoVehiculo = 3;
+
+        };
     }
     // constructor sin fecha (usa la actual)
     public PedidosDonacion(ArrayList<Bien> bienes, int tipoVehiculo, String observaciones, Donante d) {
@@ -70,7 +86,7 @@ public class PedidosDonacion {
     public String toString() {
         return "Pedido#" + id
                 + " (" + fecha + ") de " + donante
-                + " — Vehiculo: " + describirTipoVehiculo();
+                + " Vehiculo: " + describirTipoVehiculo();
     }
   
     // metodo de ayuda para el toString
@@ -87,4 +103,14 @@ public class PedidosDonacion {
         }
     }
 
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		PedidosDonacion other = (PedidosDonacion) obj;
+		return Objects.equals(bienes, other.bienes) && Objects.equals(donante, other.donante)
+				&& Objects.equals(fecha, other.fecha) && tipoVehiculo == other.tipoVehiculo;
+	}
+    
 }

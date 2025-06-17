@@ -2,18 +2,18 @@ package ar.edu.unrn.donaciones.modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class OrdenRetiro {
 
     // variables y catalogos
-    private static int secuencia = 0;
-    public static final int ESTADO_PENDIENTE = 1;
-    public static final int ESTADO_EN_EJECUCION = 2;
-    public static final int ESTADO_COMPLETADO = 3;
+    private static int secuencia = 0;//para el id
+    private static final int ESTADO_PENDIENTE = 1;
+    private static final int ESTADO_EN_EJECUCION = 2;
+    private static final int ESTADO_COMPLETADO = 3;
 
     // atributos
     private int id;
-    private Date fechaGeneracion;
     private int estado;
     private Ubicacion destino;
     private ArrayList<Colaborador> colaboradores;
@@ -23,7 +23,6 @@ public class OrdenRetiro {
     // constructor con todos los parametros
     public OrdenRetiro(PedidosDonacion pedido, Ubicacion destino) {
         this.id = ++secuencia;
-        this.fechaGeneracion = new Date();
         this.estado = ESTADO_PENDIENTE;
         this.destino = destino;
         this.pedidoOrigen = pedido;
@@ -65,7 +64,9 @@ public class OrdenRetiro {
     public ArrayList<Visita> obtenerVisitas() {
       return visitas;
     }
-
+	public boolean estaCompletada() {
+		return estado == ESTADO_COMPLETADO;
+	}
     public Colaborador obtenerVoluntario() {
       if (colaboradores.isEmpty()) {
           return null; // No hay colaboradores disponibles
@@ -75,7 +76,7 @@ public class OrdenRetiro {
   
     @Override
     public String toString() {
-        return "Orden#" + id + " -> " + destino + " [" + describirEstado() + "]";
+        return "Orden#" + id + " -> " + destino + ": " + describirEstado();
     }
   
     // metodo de ayuda para el toString
@@ -93,25 +94,35 @@ public class OrdenRetiro {
     }
   
     // metodo para imprimir el detalle de la orden
-    public String imprimirDetalle(int nroVivienda) {
+    public String imprimirDetalle(int nroVivienda) {//no es tostring porque recibe nroVivienda
         StringBuilder sb = new StringBuilder();
         sb.append("OrdenDeRetiro").append(id)
-                .append(" – Vivienda: ").append(nroVivienda)
+                .append(" Vivienda: ").append(nroVivienda)
                 .append(". Voluntario: ");
         Colaborador v = obtenerVoluntario();
-        sb.append(v != null ? v.obtenerNombre() + " " + v.obtenerApellido() : "—")
+        sb.append(v != null ? v.obtenerNombre() + " " + v.obtenerApellido() : " ")
                 .append(" (Estado: ").append(describirEstado()).append("):\n");
 
         if (visitas.isEmpty()) {
-            sb.append("  <sin visitas>\n");
+            sb.append("sin visitas\n");
         } else {
             for (int i = 0; i < visitas.size(); i++) {
                 Visita vi = visitas.get(i);
                 sb.append("  Visita ").append(i + 1)
                         .append(": Fecha: ").append(vi.obtenerFechaFormateada())
-                        .append(" –\n    Obs.: ").append(vi.obtenerObservacion()).append("\n");
+                        .append("\n    Obs.: ").append(vi.obtenerObservacion()).append("\n");
             }
         }
         return sb.toString();
     }
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		OrdenRetiro other = (OrdenRetiro) obj;
+		return Objects.equals(destino, other.destino) && estado == other.estado;
+	}
+
+
+
 }
