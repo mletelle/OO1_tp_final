@@ -2,7 +2,6 @@ package ar.edu.unrn.donaciones.modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 public class PedidosDonacion {
 
@@ -102,15 +101,9 @@ public class PedidosDonacion {
                 return "DESCONOCIDO";
         }
     }
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		PedidosDonacion other = (PedidosDonacion) obj;
-		return Objects.equals(bienes, other.bienes) && Objects.equals(donante, other.donante)
-				&& Objects.equals(fecha, other.fecha) && tipoVehiculo == other.tipoVehiculo;
-	}
-    
+    public boolean equals(PedidosDonacion obj) {
+        return (fecha.equals(obj.fecha))&&
+        (this.tipoVehiculo==obj.tipoVehiculo)&&
+        (this.donante.equals(obj.donante));
+    } 
 }

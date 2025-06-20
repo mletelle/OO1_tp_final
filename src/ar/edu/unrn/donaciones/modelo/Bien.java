@@ -1,7 +1,5 @@
 package ar.edu.unrn.donaciones.modelo;
 
-import java.util.Objects;
-
 public class Bien {
 
     // constantes 

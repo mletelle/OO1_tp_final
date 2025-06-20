@@ -1,8 +1,6 @@
 package ar.edu.unrn.donaciones.modelo;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 
 public class OrdenRetiro {
 
@@ -116,13 +114,7 @@ public class OrdenRetiro {
         return sb.toString();
     }
 
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		OrdenRetiro other = (OrdenRetiro) obj;
-		return Objects.equals(destino, other.destino) && estado == other.estado;
-	}
-
-
-
+	public boolean equals(OrdenRetiro obj) {
+        return (this.estado==obj.estado) && (this.destino.equals(obj.destino)) && (this.pedidoOrigen.equals(obj.pedidoOrigen));
+    }
 }
