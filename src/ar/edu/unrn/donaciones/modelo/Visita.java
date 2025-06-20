@@ -52,11 +52,11 @@ public class Visita {
     }
 
     // helper formateador de fecha: dia/mes/anioo hora:minuto
-    private static final java.text.SimpleDateFormat F = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
+    private static final java.text.SimpleDateFormat fecha = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
 
     // getters
     public String obtenerFechaFormateada() {
-        return F.format(fechaDeVisita);
+        return fecha.format(fechaDeVisita);
     }
 
     public String obtenerObservacion() {

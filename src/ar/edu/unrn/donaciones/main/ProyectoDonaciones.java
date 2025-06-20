@@ -13,7 +13,8 @@ public class ProyectoDonaciones {
         // organizacion y voluntarios
         // creo la ong Fundacion RN
         Organizacion ong = new Organizacion("Fundacion RN");
-        Ubicacion base = new Ubicacion("1 Junta 100", "Centro", "Viedma", -40.8, -63.0);
+        Ubicacion base = new Ubicacion("1 Junta 100", "Centro", "Barrio Don Bosco", -40.8, -63.0); 
+        Ubicacion casa = new Ubicacion("Rivadavia 420", "Norte", "Costanera Norte", -40.9, -63.1);
         // tres colaboradores con su info y ubi
         // no es seguro hacer downcasting en este caso
         Colaborador juan = new Colaborador("Juan", "Perez", 9876543, base);
@@ -25,7 +26,7 @@ public class ProyectoDonaciones {
         ong.agregarVoluntario(maria);
 
         // donante para los pedidos
-        Donante ana = new Donante("Ana", "Lopez", 12345678, base);
+        Donante ana = new Donante("Ana", "Lopez", 12345678, casa);
 
         // lote de bienes
         ArrayList<Bien> lote = new ArrayList<>();
@@ -63,7 +64,7 @@ public class ProyectoDonaciones {
                 "Se recolectaron todas las donaciones", bVisita));
 
         // imprimir detalle de las ordenes
-        System.out.println("\n--- Detalle Formateado ---\n");
+        System.out.println("\n DETALLE DE VISITAS \n");
         System.out.println(o1.imprimirDetalle(1));
         System.out.println(o2.imprimirDetalle(2));
         System.out.println(o3.imprimirDetalle(3));
