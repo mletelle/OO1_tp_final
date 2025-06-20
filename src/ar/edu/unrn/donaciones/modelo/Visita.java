@@ -51,7 +51,7 @@ public class Visita {
         }
     }
 
-    // helper formateador de fecha: dia/mes/aÃ±o hora:minuto
+    // helper formateador de fecha: dia/mes/anioo hora:minuto
     private static final java.text.SimpleDateFormat F = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
 
     // getters

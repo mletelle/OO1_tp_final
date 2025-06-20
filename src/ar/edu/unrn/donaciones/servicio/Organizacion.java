@@ -17,21 +17,21 @@ public class Organizacion {
     }
 
     public void agregarVoluntario(Colaborador c) {
-        if (!voluntarios.contains(c)) {
+        if (!voluntarios.contains(c)) {//evitar duplicados
             voluntarios.add(c);
         }
     }
 
     public OrdenRetiro gestionarSolRet(PedidosDonacion pedido) {
-        // 1) Crear la orden
+        // crear la orden
         OrdenRetiro orden = new OrdenRetiro(
                 pedido,
                 pedido.obtenerDonante().obtenerUbicacion());
 
-        // 2) Intentar asignarla a cada voluntario
+        // intentar asignarla a cada voluntario
         for (Colaborador c : voluntarios) {
             if (c.aceptarOrden(orden)) {
-                // 3) Notificar al donante
+                // notificar al donante
                 pedido.obtenerDonante().notificar("Se genero " + orden);
                 return orden;
             }

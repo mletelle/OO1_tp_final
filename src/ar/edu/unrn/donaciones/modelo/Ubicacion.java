@@ -42,17 +42,12 @@ public class Ubicacion {
         return direccion + " - " + barrio + " (" + zona + ")";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)//si es el mismo objeto, son iguales
-            return true;
-        if (!(obj instanceof Ubicacion))
-            return false;//si no es instancia de Ubicacion, no pueden ser iguales
-        Ubicacion otra = (Ubicacion) obj;
+    public boolean equals(Ubicacion obj) {
         //si son iguales todos los atributos, son iguales
-        return direccion.equals(otra.direccion) &&
-                zona.equals(otra.zona) &&
-                barrio.equals(otra.barrio) &&
-                coordenada.equals(otra.coordenada);
+        // usa equals de Coordenada y String 
+        return direccion.equals(obj.direccion) &&
+                zona.equals(obj.zona) &&
+                barrio.equals(obj.barrio) &&
+                coordenada.equals(obj.coordenada);
     }
 }

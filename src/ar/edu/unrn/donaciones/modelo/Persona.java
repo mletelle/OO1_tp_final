@@ -15,6 +15,11 @@ public abstract class Persona {
         this.dni = dni;
         this.ubicacion = ubicacion;
     }
+        public Persona(String nombre, String apellido, int dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
 
     // getters
     public String obtenerNombre() {
@@ -43,11 +48,9 @@ public abstract class Persona {
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
-            return true;// si es el mismo objeto, son iguales
-        if (!(obj instanceof Persona))
-            return false;// si no es instancia de Persona, no pueden ser iguales
-        Persona otra = (Persona) obj;
-        return this.dni == otra.dni; // unicidad por DNI
+            return true;
+        Persona other = (Persona) obj;
+        return this.dni == other.dni; // unicidad por DNI
     }
 
     @Override

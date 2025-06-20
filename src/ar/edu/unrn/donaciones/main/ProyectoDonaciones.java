@@ -13,9 +13,9 @@ public class ProyectoDonaciones {
         // organizacion y voluntarios
         // creo la ong Fundacion RN
         Organizacion ong = new Organizacion("Fundacion RN");
-        Ubicacion base = new Ubicacion("1 Junta 100", "Centro", "Viedma",
-                -40.8, -63.0);
+        Ubicacion base = new Ubicacion("1 Junta 100", "Centro", "Viedma", -40.8, -63.0);
         // tres colaboradores con su info y ubi
+        // no es seguro hacer downcasting en este caso
         Colaborador juan = new Colaborador("Juan", "Perez", 9876543, base);
         Colaborador rodrigo = new Colaborador("Rodrigo", "Gonzalez", 1357924, base);
         Colaborador maria = new Colaborador("Maria", "Sosa", 2468101, base);

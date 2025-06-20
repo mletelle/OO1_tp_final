@@ -8,6 +8,9 @@ public class Colaborador extends Persona {
     public Colaborador(String nom, String ape, int dni, Ubicacion ubi) {
         super(nom, ape, dni, ubi);
     }
+    public Colaborador(String nom, String ape, int dni) {
+        super(nom, ape, dni);
+    }
 
     // comprueba si el colaborador esta libre
     public boolean disponible() {
@@ -36,7 +39,7 @@ public class Colaborador extends Persona {
                 + mensaje);
     }
 
-    // solo esta clase puede cambiar la orden actual
+    // asignar orden actual internamente
     private void asignarOrden(OrdenRetiro o) {
         this.ordenActual = o;
     }

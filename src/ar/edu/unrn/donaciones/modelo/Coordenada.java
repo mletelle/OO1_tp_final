@@ -24,14 +24,7 @@ public class Coordenada {
         return "(" + latitud + ", " + longitud + ")";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;//si es el mismo objeto, son iguales
-        if (!(obj instanceof Coordenada))
-            return false;//si no es instancia de Coordenada, no pueden ser iguales
-        Coordenada otra = (Coordenada) obj;
-        return (latitud == otra.latitud &&
-                longitud == otra.longitud);//si son iguales todos los atributos, son iguales
+    public boolean equals(Coordenada obj) {
+        return (latitud == obj.latitud && longitud == obj.longitud);//si son iguales todos los atributos, son iguales
     }
 }
